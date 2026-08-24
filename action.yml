@@ -36,7 +36,7 @@ outputs:
   proof_directory:
     description: Generated proof pack directory; upload it with actions/upload-artifact
 runs:
-  using: node20
+  using: node24
   main: action-dist/index.cjs
 branding:
   icon: shield
