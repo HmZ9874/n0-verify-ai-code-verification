@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://n0-verify.dev/schemas/config-1.json",
+  "title": "N0 Verify configuration",
+  "type": "object",
+  "required": ["version"],
+  "properties": {
+    "version": { "const": 1 },
+    "base": {
+      "type": "object",
+      "properties": { "strategy": { "enum": ["merge-base", "direct"] }, "ref": { "type": "string" } },
+      "additionalProperties": false
+    },
+    "execution": {
+      "type": "object",
+      "properties": {
+        "mode": { "enum": ["audit", "worktree", "container"] },
+        "network": { "type": "boolean" },
+        "timeout_seconds": { "type": "number", "minimum": 1 },
+        "max_memory_mb": { "type": "number", "minimum": 128 },
+        "max_cpu": { "type": "number", "exclusiveMinimum": 0 },
+        "container_image": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "commands": {
+      "type": "object",
+      "properties": {
+        "install": { "type": "string" }, "build": { "type": "string" }, "lint": { "type": "string" },
+        "typecheck": { "type": "string" }, "test": { "type": "string" }, "coverage": { "type": "string" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,2 @@
+version: 1
+description: Default local policy. Pull requests trust the copy on the base branch.

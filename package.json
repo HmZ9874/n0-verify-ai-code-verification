@@ -1,0 +1,79 @@
+{
+  "name": "n0-verify",
+  "version": "0.1.0",
+  "description": "Independent, reproducible evidence checks for agent-written code",
+  "type": "module",
+  "bin": {
+    "n0-verify": "dist/cli-entry.js"
+  },
+  "main": "dist/verify.js",
+  "types": "dist/verify.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/verify.d.ts",
+      "import": "./dist/verify.js"
+    },
+    "./adapter-sdk": {
+      "types": "./dist/adapters.d.ts",
+      "import": "./dist/adapters.js"
+    },
+    "./plugin-sdk": {
+      "types": "./dist/plugin.d.ts",
+      "import": "./dist/plugin.js"
+    },
+    "./remote-runner": {
+      "types": "./dist/remote-runner.d.ts",
+      "import": "./dist/remote-runner.js"
+    },
+    "./dashboard": {
+      "types": "./dist/dashboard.d.ts",
+      "import": "./dist/dashboard.js"
+    },
+    "./schemas/config.json": "./schemas/config.schema.json",
+    "./schemas/proof.json": "./schemas/proof.schema.json"
+  },
+  "files": [
+    "dist",
+    "!dist/**/*.test.*",
+    "action-dist",
+    "schemas",
+    "action.yml",
+    "README.md",
+    "LICENSE",
+    "README.zh-CN.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json && npm run build:action",
+    "build:action": "esbuild src/action.ts --bundle --platform=node --target=node20 --format=cjs --outfile=action-dist/index.cjs",
+    "check": "tsc -p tsconfig.json --noEmit",
+    "test": "npm run build && node --test dist/**/*.test.js",
+    "demo": "npm run build && node dist/cli-entry.js demo",
+    "bench": "npm run build && node dist/cli-entry.js bench",
+    "prepack": "npm run build",
+    "lint": "eslint src"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [
+    "ai",
+    "verification",
+    "testing",
+    "mutation-testing",
+    "git",
+    "github-action",
+    "cli"
+  ],
+  "license": "Apache-2.0",
+  "dependencies": {
+    "yaml": "^2.8.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^24.0.0",
+    "esbuild": "^0.25.9",
+    "eslint": "^10.9.1",
+    "typescript": "^5.9.0",
+    "typescript-eslint": "^8.68.0"
+  }
+}

@@ -1,0 +1,43 @@
+name: N0 Verify
+description: Independent evidence verification for repository changes
+author: N0 Verify contributors
+inputs:
+  base:
+    description: Trusted base commit or ref
+    required: false
+  head:
+    description: Candidate commit or ref
+    required: false
+    default: HEAD
+  mode:
+    description: audit, worktree, or container
+    required: false
+    default: worktree
+  strict:
+    description: Treat warning decisions as blocking
+    required: false
+    default: "false"
+  github_token:
+    description: Optional GitHub token used to update one persistent PR comment
+    required: false
+  comment:
+    description: Update a persistent pull-request comment when a token is provided
+    required: false
+    default: "true"
+  allow-fork-execution:
+    description: Execute fork code instead of falling back to audit-only mode
+    required: false
+    default: "false"
+outputs:
+  decision:
+    description: PASS, WARN, or BLOCK
+  evidence_status:
+    description: SUPPORTED, CONTRADICTED, or INCONCLUSIVE
+  proof_directory:
+    description: Generated proof pack directory; upload it with actions/upload-artifact
+runs:
+  using: node20
+  main: action-dist/index.cjs
+branding:
+  icon: shield
+  color: blue

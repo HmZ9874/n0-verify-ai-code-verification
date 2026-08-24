@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://n0-verify.dev/schemas/proof-1.json",
+  "title": "N0 Verify proof",
+  "type": "object",
+  "required": ["schemaVersion", "toolVersion", "repository", "base", "head", "decision", "evidenceStatus", "findings", "changedFiles", "generatedAt"],
+  "properties": {
+    "schemaVersion": { "const": "1.0" },
+    "toolVersion": { "type": "string" },
+    "repository": { "type": "string" },
+    "base": { "type": "string" },
+    "head": { "type": "string" },
+    "decision": { "enum": ["PASS", "WARN", "BLOCK"] },
+    "evidenceStatus": { "enum": ["SUPPORTED", "CONTRADICTED", "INCONCLUSIVE"] },
+    "findings": { "type": "array" },
+    "changedFiles": { "type": "array" },
+    "generatedAt": { "type": "string", "format": "date-time" }
+  },
+  "additionalProperties": true
+}

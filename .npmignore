@@ -1,0 +1,9 @@
+src/
+docs/
+.github/
+.n0/
+dist/*.test.*
+dist/**/*.test.*
+tsconfig.json
+CONTRIBUTING.md
+SECURITY.md

@@ -1,0 +1,9 @@
+version: 1
+requirements:
+  - id: EXAMPLE-01
+    statement: Replace this example with a behavior the change must demonstrate
+    severity: high
+    mandatory: false
+    evidence:
+      - runtime_test
+      - negative_test

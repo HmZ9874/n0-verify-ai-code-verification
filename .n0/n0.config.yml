@@ -1,0 +1,43 @@
+version: 1
+base:
+  strategy: merge-base
+execution:
+  mode: audit
+  network: false
+  timeout_seconds: 120
+  max_memory_mb: 4096
+  max_cpu: 2
+commands: {}
+policies:
+  block_on:
+    - test_file_deleted
+    - test_skip_added
+    - focused_test_added
+    - test_failure_masked
+    - assertion_weakened
+    - non_discriminating_test
+    - mandatory_requirement_failed
+  warn_on:
+    - test_case_removed
+    - assertion_removed
+    - empty_suite_allowed
+    - coverage_reduced
+  critical_paths:
+    - src/auth/**
+    - src/payment/**
+    - .github/workflows/**
+  minimum_severity: info
+matrix:
+  enabled: true
+negative_control:
+  enabled: true
+  max_mutants: 10
+  changed_lines_only: true
+report:
+  html: true
+  json: true
+  sarif: true
+  sign: false
+adapters:
+  javascript: true
+  python: true
