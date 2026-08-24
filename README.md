@@ -1,4 +1,4 @@
-# N0 Verify
+# N0 Verify — Independent Verification for AI-Written Code
 
 **English** | [简体中文](README.zh-CN.md)
 

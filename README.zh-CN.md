@@ -1,4 +1,4 @@
-# N0 Verify
+# N0 Verify——AI 编写代码的独立验证工具
 
 [English](README.md) | **简体中文**
 
