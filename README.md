@@ -145,7 +145,7 @@ steps:
   - uses: actions/checkout@<pinned-commit>
     with:
       fetch-depth: 0
-  - uses: HmZ9874/n0-verify@<pinned-commit>
+  - uses: HmZ9874/n0-verify-ai-code-verification@<pinned-commit>
     with:
       base: ${{ github.event.pull_request.base.sha }}
       head: ${{ github.event.pull_request.head.sha }}

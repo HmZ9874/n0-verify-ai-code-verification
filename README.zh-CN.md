@@ -138,7 +138,7 @@ steps:
   - uses: actions/checkout@<固定的完整提交 SHA>
     with:
       fetch-depth: 0
-  - uses: HmZ9874/n0-verify@<固定的完整提交 SHA>
+  - uses: HmZ9874/n0-verify-ai-code-verification@<固定的完整提交 SHA>
     with:
       base: ${{ github.event.pull_request.base.sha }}
       head: ${{ github.event.pull_request.head.sha }}
